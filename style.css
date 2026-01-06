@@ -375,3 +375,18 @@ button:hover {
     font-size: 2rem;
   }
 }
+.whatsapp-btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 10px 24px;
+  background: #25D366;
+  color: #000;
+  font-weight: 300;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+  background: #1ebe5d;
+}
