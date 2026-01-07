@@ -39,3 +39,45 @@ if (heroTitle && heroText) {
       `translateY(${scrollValue * 0.25}px)`;
   });
 }
+AOS.init();
+
+const modal = document.getElementById("enquiryModal");
+const btn = document.getElementById("enquiryBtn");
+const closeBtn = document.querySelector(".close");
+
+btn.onclick = () => {
+  modal.style.display = "block";
+};
+
+closeBtn.onclick = () => {
+  modal.style.display = "none";
+};
+
+window.onclick = event => {
+  if (event.target === modal) modal.style.display = "none";
+};
+
+// SUBMIT FORM TO BACKEND
+document.getElementById("enquiryForm").addEventListener("submit", async function(e){
+  e.preventDefault();
+
+  const data = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    country: document.getElementById("country").value,
+    contact_number: document.getElementById("contact").value
+  };
+
+  const response = await fetch("http://127.0.0.1:8000/enquiry", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(data)
+  });
+
+  if(response.ok){
+    document.getElementById("successMsg").style.display = "block";
+    this.reset();
+  } else {
+    alert("Error submitting enquiry!");
+  }
+});

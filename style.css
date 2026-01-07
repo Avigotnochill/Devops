@@ -390,3 +390,58 @@ button:hover {
 .whatsapp-btn:hover {
   background: #1ebe5d;
 }
+/* MODAL POPUP */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+  background: #111;
+  margin: 10% auto;
+  padding: 40px;
+  max-width: 450px;
+  border: 1px solid #333;
+  border-radius: 10px;
+}
+
+.modal-content h2 {
+  color: #d4af37;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: #fff;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: #d4af37;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+.submit-btn:hover {
+  background: #c29f2f;
+}
+
+.close {
+  float: right;
+  cursor: pointer;
+  color: #fff;
+  font-size: 22px;
+}

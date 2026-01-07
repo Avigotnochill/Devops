@@ -12,6 +12,26 @@
     rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
+<div id="enquiryModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Export Enquiry</h2>
+
+    <form id="enquiryForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="text" id="country" placeholder="Country" required>
+      <input type="text" id="contact" placeholder="Contact Number" required>
+
+      <button type="submit" class="submit-btn">Submit Enquiry</button>
+    </form>
+
+    <p id="successMsg" style="display:none; color:#0f0;">
+      ✔ Your enquiry has been submitted!
+    </p>
+
+  </div>
+</div>
 
 <body>
   <!-- NAVBAR -->
@@ -152,16 +172,16 @@
   <!-- CONTACT PREVIEW -->
   <section class="contact" id="contact">
     <h2 data-aos="fade-up">Contact for Export Inquiry</h2>
-    
+
     <p data-aos="fade-up" data-aos-delay="100">
       Worldwide supply available on request
     </p>
 
-    <a href="https://wa.me/918619605594?text=Hello%20I%20am%20interested%20in%20Karauli%20Red%20Sandstone%20export"
-      class="whatsapp-btn" target="_blank">
-      WhatsApp Enquiry
-    </a>
-    <button data-aos="zoom-in" data-aos-delay="200">Coming Soon</button>
+    <button id="enquiryBtn" data-aos="zoom-in" data-aos-delay="200">
+      Send Export Enquiry
+    </button>
+    <a href="https://wa.me/918619605594?text=Hello%20I%20want%20to%20buy%20Karauli%20red%20sandstone"
+      class="whatsapp-btn" target="_blank">WhatsApp Enquiry</a>
   </section>
 
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
