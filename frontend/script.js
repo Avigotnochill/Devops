@@ -68,7 +68,7 @@ document.getElementById("enquiryForm").addEventListener("submit", async function
     contact_number: document.getElementById("contact").value
   };
 
-  const response = await fetch("http://127.0.0.1:8000/enquiry", {
+  const response = await fetch("/api/enquiry", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(data)
