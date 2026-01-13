@@ -13,8 +13,8 @@ spec:
         app: sandstone-frontend
     spec:
       containers:
-      - name: frontend
+      - name: sandstone-frontend
         image: avigotnochill/devops-frontend:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
-
