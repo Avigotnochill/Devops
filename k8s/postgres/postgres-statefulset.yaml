@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres
+spec:
+  serviceName: postgres        # Headless service name
+  replicas: 1                  # Only 1 DB replica to avoid corruption
+  selector:
+    matchLabels:
+      app: postgres            # Pods matching this label
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:17     # Official PostgreSQL image
+        env:
+        - name: POSTGRES_USER
+          value: "postgres"    # DB username
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:      # Read password from secret
+              name: postgres-secret
+              key: password
+        - name: POSTGRES_DB
+          value: "sandstone_db"
+        ports:
+        - containerPort: 5432  # Postgres port
+        volumeMounts:
+        - name: postgres-storage
+          mountPath: /var/lib/postgresql/data   # Real Postgres data directory
+  volumeClaimTemplates:
+  - metadata:
+      name: postgres-storage
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 2Gi
+

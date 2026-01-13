@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim      # Pod requesting disk
+metadata:
+  name: postgres-pvc             # Name of the PVC
+spec:
+  accessModes:
+    - ReadWriteOnce              # Only 1 node can write (safe for DB)
+  resources:
+    requests:
+      storage: 2Gi               # Ask for 2GB storage
+

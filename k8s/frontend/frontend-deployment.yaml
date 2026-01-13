@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sandstone-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sandstone-frontend
+  template:
+    metadata:
+      labels:
+        app: sandstone-frontend
+    spec:
+      containers:
+      - name: frontend
+        image: avigotnochill/devops-frontend:latest
+        ports:
+        - containerPort: 80
+

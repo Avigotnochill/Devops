@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sandstone-api
+spec:
+  replicas: 2                        # Auto-scale pods
+  selector:
+    matchLabels:
+      app: sandstone-api
+  template:
+    metadata:
+      labels:
+        app: sandstone-api
+    spec:
+      containers:
+      - name: api
+        image: avigotnochill/devops-api:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DATABASE_URL
+          value: "postgresql://postgres:postgres@postgres:5432/sandstone_db"
+
