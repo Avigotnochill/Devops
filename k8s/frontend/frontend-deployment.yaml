@@ -2,19 +2,45 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sandstone-frontend
+
 spec:
   replicas: 2
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
   selector:
     matchLabels:
       app: sandstone-frontend
+
   template:
     metadata:
       labels:
         app: sandstone-frontend
+
     spec:
       containers:
       - name: sandstone-frontend
-        image: avigotnochill/devops-frontend:latest
+        image: avigotnochill/devops-frontend:1
         imagePullPolicy: Always
+
         ports:
         - containerPort: 80
+
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
