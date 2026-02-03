@@ -4,6 +4,11 @@ from sqlalchemy.orm import Session
 from database import Base, engine, SessionLocal
 from models import Enquiry
 from schemas import EnquiryCreate
+from database import init_db
+
+@app.on_event("startup")
+def startup():
+    init_db()
 
 app = FastAPI()
 #Cors fix
